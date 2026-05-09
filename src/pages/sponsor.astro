@@ -6,6 +6,8 @@ import I18nKey from "@/i18n/i18nKey";
 import { i18n } from "@/i18n/translation";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
 import { url } from "@/utils/url-utils";
+import MainGridLayout from "@/layouts/MainGridLayout.astro";
+import { url } from "@/utils/url-utils";
 
 // 检查页面是否启用
 if (!siteConfig.pages.sponsor) {
@@ -129,35 +131,56 @@ const showSponsorsList = sponsorConfig.showSponsorsList !== false;
           )}
         </div>
         {sponsors.length > 0 ? (
-          <div class="sponsor-grid">
-            {sponsors.map((sponsor) => (
-              <div class="group flex items-center gap-3 p-3 rounded-xl border border-(--line-divider) hover:border-(--primary) transition-all duration-200">
-                {/* 头像占位 */}
-                <div class="w-9 h-9 rounded-full bg-(--primary)/10 flex items-center justify-center shrink-0 group-hover:bg-(--primary)/20 transition-colors">
-                  <span class="text-sm font-bold text-(--primary)">{sponsor.name.charAt(0)}</span>
-                </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+{sponsors.map((sponsor) => (
+  <div class="card-base p-5 rounded-xl flex flex-col gap-3 border border-(--line-divider) hover:border-(--primary) transition-all duration-300 group relative">
+    
+    <div class="flex justify-between items-start">
+      <div class="flex items-center gap-3">
+        {/* 头像 */}
+        <div class="w-9 h-9 rounded-full bg-(--primary)/10 flex items-center justify-center shrink-0 overflow-hidden border border-(--line-divider)">
+          {sponsor.avatar ? (
+            <img 
+              src={sponsor.avatar} 
+              alt={String(sponsor.name)} 
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <span class="text-sm font-bold text-(--primary) hidden">{String(sponsor.name).charAt(0)}</span>
+          ) : (
+            <span class="text-sm font-bold text-(--primary)">{String(sponsor.name).charAt(0)}</span>
+          )}
+        </div>
+        {/* 姓名 */}
+        <h3 class="text-base font-bold text-neutral-900 dark:text-neutral-100">
+          {String(sponsor.name)}
+        </h3>
+      </div>
 
-                {/* 信息 */}
-                <div class="flex-1 min-w-0">
-                  <div class="flex items-center gap-2">
-                    <span class="font-semibold text-sm text-neutral-900 dark:text-neutral-100 truncate">
-                      {sponsor.name}
-                    </span>
-                    {sponsor.amount && (
-                      <span class="shrink-0 text-xs font-bold text-(--primary)">
-                        {sponsor.amount}
-                      </span>
-                    )}
-                  </div>
-                  {sponsor.date && (
-                    <span class="text-[0.65rem] text-neutral-400 dark:text-neutral-500">
-                      {new Date(sponsor.date).toLocaleDateString()}
-                    </span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
+      {/* 金额气泡 - 固定在右侧 */}
+      <span class="bg-pink-100 dark:bg-pink-900/30 text-pink-500 dark:text-pink-400 text-xs font-bold px-3 py-1 rounded-full shadow-sm shrink-0">
+        {sponsor.amount}
+      </span>
+    </div>
+
+    <div class="flex-1 px-1">
+      {sponsor.message && (
+        <p class="text-left text-neutral-700 dark:text-neutral-300 text-base leading-relaxed">
+          {String(sponsor.message)}
+        </p>
+      )}
+    </div>
+
+    <div class="border-t border-(--line-divider) opacity-60 mt-1"></div>
+
+    <div class="flex items-center justify-end gap-1.5 text-neutral-400 dark:text-neutral-500 text-[11px]">
+      <Icon name="material-symbols:calendar-today-outline-rounded" class="text-sm" />
+      <span>{sponsor.date ? new Date(sponsor.date).toLocaleDateString() : ""}</span>
+    </div>
+    
+  </div>
+))}
+</div>
         ) : (
           <div class="text-center py-12 text-neutral-500 dark:text-neutral-500">
             <p>{i18n(I18nKey.sponsorEmpty)}</p>

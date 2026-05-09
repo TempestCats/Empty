@@ -50,6 +50,15 @@ export const friendsConfig: FriendLink[] = [
 		weight: 8,
 		enabled: true,
 	},
+	{
+		title: "空无-Empty",
+		imgurl: "http://tempestcat.lovestoblog.com/wp-content/uploads/2026/05/cropped-tb.1.8ab492b7.jpg",
+		desc: "Koishi的旧博客,已废弃(x",
+		siteurl: "http://tempestcat.lovestoblog.com/",
+		tags: ["Blog"],
+		weight: 11, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
 ];
 
 // 获取启用的友链并进行排序

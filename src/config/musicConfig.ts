@@ -11,13 +11,13 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	showInNavbar: true,
 
 	// 使用方式："meting" 使用 Meting API，"local" 使用本地音乐列表
-	mode: "meting",
+	mode: "local",
 
 	// 默认音量 (0-1)
 	volume: 0.7,
 
 	// 播放模式：'list'=列表循环, 'one'=单曲循环, 'random'=随机播放
-	playMode: "list",
+	playMode: "random",
 
 	// 是否显启用歌词
 	showLyrics: true,
@@ -56,6 +56,15 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				cover: "/assets/music/cover/109951169585655912.webp",
 				lrc: "",
 			},
+			{
+				name: "是你",
+				artist: "梦然",
+				url: "/assets/music/是你 - 梦然.flac",
+				cover: "/assets/music/cover/是你-Single-600.jpg",
+				lrc: "/assets/music/lrc/是你 - 梦然.lrc",
+			},
 		],
+		
 	},
+	
 };
