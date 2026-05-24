@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "Empty",
 
 	// 站点 URL
-	site_url: "https://blog.216725.xyz/rss.xml",
+	site_url: "https://blog.216725.xyz/",
 
 	// 站点描述
 	description:
