@@ -1,7 +1,7 @@
 ---
 title: 日常
 published: 2026-05-12
-description: 分享日常
+description: Markdown.ing
 tags: [杂谈]
 category: 杂谈
 draft: false
