@@ -63,6 +63,13 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 				cover: "/assets/music/cover/是你-Single-600.jpg",
 				lrc: "/assets/music/lrc/是你 - 梦然.lrc",
 			},
+			{
+				name: "shelter",
+				artist: "Porter Robinson、Madeon",
+				url: "/assets/music/Shelter - Porter Robinson、Madeon.mp3",
+				cover: "/assets/music/cover/Shelter-Single-600.jpg",
+				lrc: "/assets/music/lrc/Shelter - Porter Robinson、Madeon.lrc",
+			},
 		],
 		
 	},
